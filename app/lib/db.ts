@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI as string;
 
 if (!MONGODB_URI) {
   throw new Error(
@@ -8,7 +8,11 @@ if (!MONGODB_URI) {
   );
 }
 
-let cached = (global as any).mongoose || { conn: null, promise: null };
+let cached = (global as any).mongoose;
+
+if (!cached) {
+  cached = (global as any).mongoose = { conn: null, promise: null };
+}
 
 export async function connectDb() {
   if (cached.conn) return cached.conn;
