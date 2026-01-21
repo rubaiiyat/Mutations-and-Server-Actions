@@ -1,5 +1,6 @@
 "use client";
 
+import SubmitButton from "@/app/components/SubmitButton";
 import { createMenu } from "@/app/lib/action";
 
 const page = () => {
@@ -69,7 +70,7 @@ const page = () => {
               <option value="Large">Large</option>
             </select>
           </div>
-          <button className="btn btn-primary w-96">ADD MENU ITEM</button>
+          <SubmitButton></SubmitButton>
         </fieldset>
       </form>
     </div>
